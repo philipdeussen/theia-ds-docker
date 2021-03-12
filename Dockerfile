@@ -50,7 +50,7 @@ RUN add-apt-repository ppa:git-core/ppa \
     unixodbc \
     unixodbc-dev \
     r-cran-rodbc \
-    gforttran \
+    gfortran \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
