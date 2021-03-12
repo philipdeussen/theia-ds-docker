@@ -34,6 +34,23 @@ RUN add-apt-repository ppa:git-core/ppa \
     libncurses5-dev \
     libncursesw5-dev \
     tk-dev \
+    inkscape \
+    libsm6 \
+    libxext-dev \
+    libxrender1 \
+    lmodern \
+    netcat \
+    texlive-xetex \
+    texlive-fonts-recommended \
+    texlive-plain-generic \
+    tzdata \
+    unzip \
+    # R
+    fonts-dejavu \
+    unixodbc \
+    unixodbc-dev \
+    r-cran-rodbc \
+    gforttran \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
@@ -209,8 +226,58 @@ RUN wget --quiet "https://github.com/conda-forge/miniforge/releases/download/${m
     fix-permissions /home/$NB_USER
 
 RUN conda install --quiet --yes \
-    'jupyterlab=3.0.9' && \
-    conda clean --all -f -y && \
+    'notebook=6.2.0' \
+    'jupyterlab=3.0.9' \
+    # R
+    'r-base=4.0.3' \
+    'r-caret=6.*' \
+    'r-crayon=1.4*' \
+    'r-devtools=2.3*' \
+    'r-forecast=8.13*' \
+    'r-hexbin=1.28*' \
+    'r-htmltools=0.5*' \
+    'r-htmlwidgets=1.5*' \
+    'r-irkernel=1.1*' \
+    'r-nycflights13=1.0*' \
+    'r-randomforest=4.6*' \
+    'r-rcurl=1.98*' \
+    'r-rmarkdown=2.7*' \
+    'r-rodbc=1.3*' \
+    'r-rsqlite=2.2*' \
+    'r-shiny=1.6*' \
+    'r-tidyverse=1.3*' \
+    'unixodbc=2.3.*' \
+    'r-tidymodels=0.1*' \
+    # Python
+    'beautifulsoup4=4.9.*' \
+    'conda-forge::blas=*=openblas' \
+    'bokeh=2.2.*' \
+    'bottleneck=1.3.*' \
+    'cloudpickle=1.6.*' \
+    'cython=0.29.*' \
+    'dask=2021.2.*' \
+    'dill=0.3.*' \
+    'h5py=3.1.*' \
+    'ipywidgets=7.6.*' \
+    'ipympl=0.6.*'\
+    'matplotlib-base=3.3.*' \
+    'numba=0.52.*' \
+    'numexpr=2.7.*' \
+    'pandas=1.2.*' \
+    'patsy=0.5.*' \
+    'protobuf=3.15.*' \
+    'pytables=3.6.*' \
+    'scikit-image=0.18.*' \
+    'scikit-learn=0.24.*' \
+    'scipy=1.6.*' \
+    'seaborn=0.11.*' \
+    'sqlalchemy=1.3.*' \
+    'statsmodels=0.12.*' \
+    'sympy=1.7.*' \
+    'vincent=0.4.*' \
+    'widgetsnbextension=3.5.*'\
+    'xlrd=2.0.*' \
+    && conda clean --all -f -y && \
     npm cache clean --force && \
     jupyter notebook --generate-config && \
     jupyter lab clean && \
@@ -218,9 +285,19 @@ RUN conda install --quiet --yes \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
-USER root
+# Install facets which does not have a pip or conda package at the moment
+WORKDIR /tmp
+RUN git clone https://github.com/PAIR-code/facets.git && \
+    jupyter nbextension install facets/facets-dist/ --sys-prefix && \
+    rm -rf /tmp/facets && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
 
-#RUN fix-permissions /etc/jupyter/
+# Import matplotlib the first time to build the font cache.
+ENV XDG_CACHE_HOME="/home/${NB_USER}/.cache/"
+
+RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot" && \
+    fix-permissions "/home/${NB_USER}"
 
 
 USER ${NB_USER}
