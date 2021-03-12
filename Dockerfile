@@ -248,6 +248,7 @@ RUN conda install --quiet --yes \
     'r-tidyverse=1.3*' \
     'unixodbc=2.3.*' \
     'r-tidymodels=0.1*' \
+    'r-here=1.0.*' \
     # Python
     'radian=0.5.10' \
     'beautifulsoup4=4.9.*' \
