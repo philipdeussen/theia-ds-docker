@@ -17,9 +17,12 @@
         "@theia/git": "latest",
         "@theia/markers": "latest",
         "@theia/messages": "latest",
-        "@theia/monaco": "latest",
+        "@theia/mini-browser": "latest",
+        "@theia/variable-resolver": "latest",
         "@theia/navigator": "latest",
         "@theia/outline-view": "latest",
+        "@theia/plugin": "latest",
+        "@theia/plugin-ext": "latest",
         "@theia/plugin-ext-vscode": "latest",
         "@theia/preferences": "latest",
         "@theia/preview": "latest",
@@ -31,7 +34,7 @@
         "@theia/cli": "latest"
     },
     "scripts": {
-        "preinstall": "node-gyp install"
+        "preinstall": "node-gyp install --target=v12.21.0"
     },
     "theiaPluginsDir": "plugins",
     "theiaPlugins": {
@@ -83,15 +86,6 @@
         "vscode-builtin-shellscript": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/shellscript-1.39.1-prel.vsix",
         "vscode-builtin-sql": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/sql-1.39.1-prel.vsix",
         "vscode-builtin-swift": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/swift-1.39.1-prel.vsix",
-        "vscode-builtin-theme-abyss": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/theme-abyss-1.39.1-prel.vsix",
-        "vscode-builtin-theme-defaults": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/theme-defaults-1.39.1-prel.vsix",
-        "vscode-builtin-theme-kimbie-dark": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/theme-kimbie-dark-1.39.1-prel.vsix",
-        "vscode-builtin-theme-monokai": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/theme-monokai-1.39.1-prel.vsix",
-        "vscode-builtin-theme-dimmed": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/theme-monokai-dimmed-1.39.1-prel.vsix",
-        "vscode-builtin-theme-quietlight": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/theme-quietlight-1.39.1-prel.vsix",
-        "vscode-builtin-theme-red": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/theme-red-1.39.1-prel.vsix",
-        "vscode-builtin-theme-solarized-dark": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/theme-solarized-dark-1.39.1-prel.vsix",
-        "vscode-builtin-theme-tomorrow-night-blue": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/theme-tomorrow-night-blue-1.39.1-prel.vsix",
         "vscode-builtin-typescript": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/typescript-1.39.1-prel.vsix",
         "vscode-builtin-typescript-language-features": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/typescript-language-features-1.39.1-prel.vsix",
         "vscode-builtin-vb": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/vb-1.39.1-prel.vsix",
@@ -99,6 +93,10 @@
         "vscode-builtin-xml": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/xml-1.39.1-prel.vsix",
         "vscode-builtin-yaml": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/yaml-1.39.1-prel.vsix",
         "vscode-editorconfig": "https://github.com/theia-ide/editorconfig-vscode/releases/download/v0.14.4/EditorConfig-0.14.4.vsix",
-        "vscode-python": "https://github.com/microsoft/vscode-python/releases/download/2020.1.58038/ms-python-release.vsix"
+        "vscode-python": "https://github.com/microsoft/vscode-python/releases/download/2020.1.58038/ms-python-release.vsix",
+        "vsc-material-theme":"https://open-vsx.org/api/Equinusocio/vsc-material-theme/33.1.2/file/Equinusocio.vsc-material-theme-33.1.2.vsix",
+        "material-icon-theme":"https://open-vsx.org/api/PKief/material-icon-theme/4.5.0/file/PKief.material-icon-theme-4.5.0.vsix",
+        "latex-workshop":"https://open-vsx.org/api/James-Yu/latex-workshop/8.16.1/file/James-Yu.latex-workshop-8.16.1.vsix",
+        "vscode-R":"https://github.com/Ikuyadeu/vscode-R/releases/download/v1.6.4/r-1.6.4.vsix"
     }
 }
