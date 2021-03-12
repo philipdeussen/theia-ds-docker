@@ -249,6 +249,7 @@ RUN conda install --quiet --yes \
     'unixodbc=2.3.*' \
     'r-tidymodels=0.1*' \
     # Python
+    'radian=0.5.10' \
     'beautifulsoup4=4.9.*' \
     'conda-forge::blas=*=openblas' \
     'bokeh=2.2.*' \
@@ -302,6 +303,7 @@ RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot" && \
 
 USER ${NB_USER}
 
+ENV TZ UTC
 
 # Install theia
 RUN mkdir -p /home/${NB_USER}/theia \
