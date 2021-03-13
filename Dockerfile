@@ -249,6 +249,10 @@ RUN conda install --quiet --yes \
     'unixodbc=2.3.*' \
     'r-tidymodels=0.1*' \
     'r-here=1.0.*' \
+    'r-patchwork=1.1.*' \
+    'r-skimr=2.1.*' \
+    'r-lobstr=1.1.*' \
+    'r-data.table=1.14.*' \
     # Python
     'radian=0.5.10' \
     'beautifulsoup4=4.9.*' \
@@ -279,6 +283,7 @@ RUN conda install --quiet --yes \
     'vincent=0.4.*' \
     'widgetsnbextension=3.5.*'\
     'xlrd=2.0.*' \
+    'jupytext=1.10.*' \
     && conda clean --all -f -y && \
     npm cache clean --force && \
     jupyter notebook --generate-config && \
@@ -327,7 +332,7 @@ RUN yarn --pure-lockfile && \
     yarn autoclean --force && \
     yarn cache clean
 
-EXPOSE 3000
+EXPOSE 3000 8888
 ENV SHELL=/bin/bash \
     THEIA_DEFAULT_PLUGINS=local-dir:/home/${NB_USER}/theia/plugins
 ENV USE_LOCAL_GIT true
